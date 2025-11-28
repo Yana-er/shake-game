@@ -123,13 +123,9 @@ class Snake(GameObject):
         elif self.direction == DOWN:
             new_head_pos = (x, (y + GRID_SIZE) % SCREEN_HEIGHT)
         elif self.direction == LEFT:
-            new_head_pos = (
-                (x - GRID_SIZE) % SCREEN_WIDTH,
-                y)
+            new_head_pos = ((x - GRID_SIZE) % SCREEN_WIDTH, y)
         elif self.direction == RIGHT:
-            new_head_pos = (
-                (x + GRID_SIZE) % SCREEN_WIDTH,
-                y)
+            new_head_pos = ((x + GRID_SIZE) % SCREEN_WIDTH,y)
 
         # Вставляем новую позицию головы в начало списка positions
         self.positions.insert(0, new_head_pos)
