@@ -1,3 +1,5 @@
+import random
+
 import pygame
 
 # Константы для размеров поля и сетки:
@@ -76,8 +78,8 @@ class Apple(GameObject):
     def randomize_position(self, snake_positions):
         """Определяет случайную позицию для яблока на игровом поле."""
         while True:
-            new_position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE,
-                            randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
+            new_position = (random.randint(0, GRID_WIDTH - 1) * GRID_SIZE,
+                            random.randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
             if new_position not in snake_positions:
                 self.position = new_position
                 break
@@ -121,9 +123,13 @@ class Snake(GameObject):
         elif self.direction == DOWN:
             new_head_pos = (x, (y + GRID_SIZE) % SCREEN_HEIGHT)
         elif self.direction == LEFT:
-            new_head_pos = ((x - GRID_SIZE) % SCREEN_WIDTH, y)
+            new_head_pos = (
+                (x - GRID_SIZE) % SCREEN_WIDTH,
+                y)
         elif self.direction == RIGHT:
-            new_head_pos = ((x + GRID_SIZE) % SCREEN_WIDTH, y)
+            new_head_pos = (
+                (x + GRID_SIZE) % SCREEN_WIDTH,
+                y)
 
         # Вставляем новую позицию головы в начало списка positions
         self.positions.insert(0, new_head_pos)
@@ -144,7 +150,7 @@ if len(self.positions) > self.length:
         self.positions = [CENTER_OF_SCREEN]
         self.direction = RIGHT
         self.next_direction = None
-        self.direction = choice([UP, DOWN, LEFT, RIGHT])
+        self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
 
     def draw(self):
         """Отрисовывает змейку на экране."""
