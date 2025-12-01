@@ -135,7 +135,7 @@ class Snake(GameObject):
 
     def draw(self):
         """Отрисовывает змейку."""
-    for pos in self.positions[:-1]:
+for pos in self.positions[:-1]:
             self.draw_rect(pos, self.body_color)
 
         self.draw_rect(self.positions[0], self.body_color)
