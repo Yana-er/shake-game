@@ -1,4 +1,4 @@
-from random import randint, choice
+from random import randint
 import pygame
 
 # Константы для размеров поля и сетки:
@@ -130,12 +130,12 @@ class Snake(GameObject):
         screen.fill(BOARD_BACKGROUND_COLOR)
         self.length = 1
         self.positions = [CENTER_OF_SCREEN]
-        self.direction = choice([UP, DOWN, LEFT, RIGHT])
+        self.direction = randint(0, 3)  # Случайное направление
         self.next_direction = None
 
     def draw(self):
         """Отрисовывает змейку."""
-for pos in self.positions[:-1]:
+    for pos in self.positions[:-1]:
             self.draw_rect(pos, self.body_color)
 
         self.draw_rect(self.positions[0], self.body_color)
